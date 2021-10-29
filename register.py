@@ -7,3 +7,5 @@ def main_screen():
     Label (text = "").pack()
     Button(text = "Login").pack()
     Button(text = "Register").pack()
+    screen.mainloop()
+    main_screen()
