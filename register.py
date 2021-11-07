@@ -51,11 +51,12 @@ def create_description():
 def view_description1():
     filename1 = raw_filename1.get()
     data = open(filename1, "r")
-    data = data.read()
+    data1 = data.read()
     screen12 = Toplevel(screen)
     screen12.title("Info")
     screen12.geometry("400x400")
-    Label(screen12, text = "Business description")
+    Label(screen12, text = data1).pack()
+    
   
  
 def view_description():
@@ -68,7 +69,7 @@ def view_description():
     global raw_filename1
     raw_filename1 = StringVar()
     Entry(screen11, textvariable=raw_filename1).pack()
-    Button (screen11, text = "View Description", command= view_description).pack()
+    Button (screen11, text = "View Description", command= view_description1).pack()
 
 
 
