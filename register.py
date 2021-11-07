@@ -7,15 +7,85 @@ def delete3():
     screen4.destroy()
 def delete4():
     screen5.destroy()
+def delete4():
+    screen10.destroy()
+
+def logout():\
+    print = "screen7.destroy()"
+def saved():
+    global screen10
+    screen10 = Toplevel(screen)
+    screen10.title("Saved")
+    screen10.geometry("100x100")
+    Label(screen10, text = "Saved").pack()
+    Button (screen10, text = "OK").pack()
+
+
+def save():
+    filename = raw_filename.get()
+    notes = raw_description.get()
+    data = open(filename, 'w')
+    data.write(notes)
+    data.close()
+    saved()
+def create_description():
+    global raw_filename
+    raw_filename = StringVar()
+
+    
+
+    global raw_description
+    raw_description = StringVar()
+
+    screen9 = Toplevel(screen)
+    screen9.title("Business description")
+    screen9.geometry("300x250")
+
+    Label(screen9, text = "Enter filename").pack()
+    Entry(screen9, textvariable= raw_filename).pack()
+   
+  
+    Label(screen9, text = "Enter description").pack()
+    Entry(screen9, textvariable= raw_description).pack()
+    Button (screen9, text = "Save", command= save).pack()
+def view_description1():
+    filename1 = raw_filename1.get()
+    data = open(filename1, "r")
+    data = data.read()
+    screen12 = Toplevel(screen)
+    screen12.title("Info")
+    screen12.geometry("400x400")
+    Label(screen12, text = "Business description")
+  
+ 
+def view_description():
+    screen11 = Toplevel(screen)
+    screen11.title("Info")
+    screen11.geometry("400x400")
+    Label(screen11, text = "Business description")
+    all_files = os.listdir()
+    Label(screen11, text= all_files).pack()
+    global raw_filename1
+    raw_filename1 = StringVar()
+    Entry(screen11, textvariable=raw_filename1).pack()
+    Button (screen11, text = "View Description", command= view_description).pack()
+
+
+
+def session():
+    screen8 = Toplevel(screen)
+    screen8.title("dashboard")
+    screen8.geometry("400x400")
+    Label(screen8, text = "Welcome to the dashboard")
+    Button (screen8, text = "Create business description", command= create_description).pack()
+    Button (screen8, text = "View description", command= view_description).pack()
+    Button (screen8, text = "Delete description").pack()
 
 
 def login_sucess():
-    global screen3
-    screen3 = Toplevel(screen)
-    screen3.title("Success")
-    screen3.geometry("150x100")
-    Label(screen3, text = "Login Sucess").pack()
-    Button(screen3, text="OK", command = delete2).pack()
+    session()
+
+
 
 def password_not_recognized():
     global screen4
@@ -48,8 +118,9 @@ def register_user():
     Label(screen1, text="Registration Successiful", fg = "green",font = ("Calibri", 13)).pack()
 
 def login_verify():
+    global username1
     username1 = username_verify.get()
-    password1 = username_verify.get()
+    password1 = password_verify.get()
 
     username_entry1.delete(0, END)
     password_entry1.delete(0, END)
