@@ -16,7 +16,8 @@ class Database:
 				id INTEGER PRIMARY KEY AUTOINCREMENT,
 				username text NOT NULL,
 				password text NOT NULL,
-				bnote text NOT NULL
+				bnote text NOT NULL,
+				tbusiness text NOT NULL
 		)
 		'''
 		
