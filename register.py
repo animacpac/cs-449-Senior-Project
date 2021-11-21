@@ -2,16 +2,16 @@ from tkinter import *
 import os
 
 def delete2():
-    screen3.destroy()
+    print("ok")
 def delete3():
     screen4.destroy()
 def delete4():
     screen5.destroy()
-def delete4():
+def delete5():
     screen10.destroy()
 
 def logout():\
-    print = "screen7.destroy()"
+    print("screen7.destroy()")
 def saved():
     global screen10
     screen10 = Toplevel(screen)
