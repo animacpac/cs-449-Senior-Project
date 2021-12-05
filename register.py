@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import filedialog
 import os
 import Asymmetric
 import caesar
@@ -116,6 +117,9 @@ def execaes():
     Label(screen18, text = time.time() - start).pack()
     print(screen18, "% s seconds" % (time.time() - start))
     Button(screen18, text="OK", command= delete18).pack()
+    f = open("times.txt", "a")
+    f.write("\n AES: "+format(time.time() - start)+"\n")
+    f.close()
 
 def execdes():
     global screen17
@@ -128,6 +132,9 @@ def execdes():
     Label(screen17, text = time.time() - start).pack()
     print(screen17, "% s seconds" % (time.time() - start))
     Button(screen17, text="OK", command= delete17).pack()
+    f = open("times.txt", "a")
+    f.write("\n DES: "+format(time.time() - start)+"\n")
+    f.close()
 
 def execceaser():
     global screen16
@@ -140,6 +147,9 @@ def execceaser():
     Label(screen16, text = time.time() - start).pack()
     print(screen16, "% s seconds" % (time.time() - start))
     Button(screen16, text="OK", command= delete16).pack()
+    f = open("times.txt", "a")
+    f.write("\n Ceaser: "+format(time.time() - start)+"\n")
+    f.close()
 
 
 def execrc4():
@@ -153,6 +163,9 @@ def execrc4():
     Label(screen15, text = time.time() - start).pack()
     print(screen15, "% s seconds" % (time.time() - start))
     Button(screen15, text="OK", command= delete15).pack()
+    f = open("times.txt", "a")
+    f.write("\n RC4: "+format(time.time() - start)+"\n")
+    f.close()
 
 def execrsa():
     global screen14
@@ -166,6 +179,9 @@ def execrsa():
     Label(screen14, text = time.time() - start).pack()
     print(screen14, "% s seconds" % (time.time() - start))
     Button(screen14, text="OK", command= delete14).pack()
+    f = open("times.txt", "a")
+    f.write("\n RSA: "+format(time.time() - start)+"\n")
+    f.close()
 
 def execfernet():
     global screen13
@@ -179,8 +195,8 @@ def execfernet():
     Label(screen13, text = time.time() - start).pack()
     print(screen13, "% s seconds" % (time.time() - start))
     Button(screen13, text="OK", command= delete13).pack()
-    f = open("times.txt", "w")
-    f.write("FERNET: "+format(time.time() - start)+"n/")
+    f = open("times.txt", "a")
+    f.write("\n FERNET: "+format(time.time() - start)+"\n")
     f.close()
 
 def view_description():
@@ -195,7 +211,31 @@ def view_description():
     Entry(screen11, textvariable=raw_filename1).pack()
     Button (screen11, text = "View Description", command= view_description1).pack()
    
+def view_log():
+    screen19 = Toplevel(screen)
+    screen19.title("Info")
+   
+    pathh = Entry(screen19)
+    pathh.pack(side=LEFT, expand=True, fill=X, padx=20)
+    txtarea = Text(screen19, width=40, height=20)
+    txtarea.pack(pady=20)
+  
+    tf = filedialog.askopenfilename(
+        initialdir=".\cs-449-Senior-Project", 
+        title="Open Text file", 
+        filetypes=(("Text Files", "*.txt"),)
+        )
+    pathh.insert(END, tf)
+    tf = open(tf)  # or tf = open(tf, 'r')
+    data = tf.read()
+    txtarea.insert(END, data)
+    tf.close()
+
+
+
+   
     
+
 def run_test():
     screen12 = Toplevel(screen)
     screen12.title("Info")
@@ -222,6 +262,7 @@ def session():
     Button (screen8, text = "View description", command= view_description).pack()
     Button (screen8, text = "Run Test", command= run_test).pack()
     Button (screen8, text = "Select Business", command= businestype).pack()
+    Button (screen8, text = "View Log", command= view_log).pack()
 
 
 
