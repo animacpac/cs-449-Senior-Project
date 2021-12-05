@@ -25,4 +25,6 @@ def cc_decrypt(msg: str,key: int) -> str:
   
 message = 'Hello World!'
 key = 9
-print(f'Caesar Cipher:\nEncrypted: {cc_encrypt(message,key)}\nDecrypted: {cc_decrypt(cc_encrypt(message,key),key)}')
+
+def main():
+    print(f'Caesar Cipher:\nEncrypted: {cc_encrypt(message,key)}\nDecrypted: {cc_decrypt(cc_encrypt(message,key),key)}')
