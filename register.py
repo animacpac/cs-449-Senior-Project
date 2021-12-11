@@ -1,5 +1,7 @@
 from tkinter import *
 from tkinter import filedialog
+
+import subprocess
 import os
 import Asymmetric
 import caesar
@@ -30,6 +32,9 @@ def delete17():
     screen17.destroy()
 def delete18():
     screen18.destroy()
+def delete20():
+    screen20.destroy()
+
 def logout():\
     print("screen7.destroy()")
 def saved():
@@ -104,8 +109,11 @@ def view_description1():
     screen12.title("Info")
     screen12.geometry("400x400")
     Label(screen12, text = data1).pack()
-    
-    
+
+def monitor():
+    os.system("C:\Windows\System32\perfmon.exe /res")
+    delete20() 
+
 def execaes():
     global screen18
     screen18 = Toplevel(screen)
@@ -231,11 +239,6 @@ def view_log():
     txtarea.insert(END, data)
     tf.close()
 
-
-
-   
-    
-
 def run_test():
     screen12 = Toplevel(screen)
     screen12.title("Info")
@@ -251,7 +254,14 @@ def run_test():
     Button (screen12, text = "RSA", command= execrsa).pack()
     Button (screen12, text = "Fernet", command= execfernet).pack()
 
-
+def monitor_launch():
+    global screen20
+    screen20 = Toplevel(screen)
+    screen20.title("Monitor")
+    screen20.geometry("400x400")
+    Label(screen20, text = "Monitor")
+    Button(screen20, text = "Monitor", command= monitor).pack()
+    
 
 def session():
     screen8 = Toplevel(screen)
@@ -263,6 +273,7 @@ def session():
     Button (screen8, text = "Run Test", command= run_test).pack()
     Button (screen8, text = "Select Business", command= businestype).pack()
     Button (screen8, text = "View Log", command= view_log).pack()
+    Button (screen8, text = "Monitor", command= monitor_launch).pack()
 
 
 
